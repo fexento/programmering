@@ -32,7 +32,7 @@
 
           if ($antallRader!=0)  /* poststedet er registrert fra før */
             {
-              print ("Poststedet er registrert fra før");
+              print ("Klassen er registrert fra før");
             }
           else
             {
@@ -40,7 +40,7 @@
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende poststed er n&aring; registrert: $klassekode $klassenavn $studiumkode"); 
+              print ("F&oslash;lgende klasse er n&aring; registrert: $klassekode $klassenavn $studiumkode"); 
             }
         }
     }
