@@ -20,7 +20,7 @@
       $etternavn=$rad["etternavn"];
       $klassekode=$rad["klassekode"];    
 
-      print ("<tr> <td> $brukernavn </td> <td> $fornavn </td> <td> $etternavn </td> <td> klassekode </td> </tr>");
+      print ("<tr> <td> $brukernavn </td> <td> $fornavn </td> <td> $etternavn </td> <td> $klassekode </td> </tr>");
     }
   print ("</table>"); 
 ?>
