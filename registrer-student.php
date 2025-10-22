@@ -43,7 +43,7 @@
             }
           else
             {
-              $sqlSetning="INSERT INTO brukernavn VALUES('$brukernavn','$fornavn', '$etternavn', '$klassekode');";
+              $sqlSetning="INSERT INTO student VALUES('$brukernavn','$fornavn', '$etternavn', '$klassekode');";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
