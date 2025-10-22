@@ -1,8 +1,5 @@
-<?php  /* registrer-poststed */
-/*
-/*  Programmet lager et html-skjema for å registrere et poststed
-/*  Programmet registrerer data (postnr og poststed) i databasen
-*/
+<?php  
+
 ?> 
 
 <h3>Registrer student </h3>
@@ -27,7 +24,7 @@
 
       if (!$brukernavn || !$fornavn || !$etternavn || !$klassekode)
         {
-          print ("BAlle felt må fylles ut");
+          print ("Alle felt må fylles ut");
         }
       else
         {
@@ -47,7 +44,7 @@
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende student er n&aring; registrert: $brukernavn ($fornavn $etternavn) $klassekode"); 
+              print ("F&oslash;lgende student er n&aring; registrert: $brukernavn $fornavn $etternavn $klassekode"); 
             }
         }
     }
