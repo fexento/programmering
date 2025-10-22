@@ -15,8 +15,8 @@
   for ($r=1;$r<=$antallRader;$r++)
     {
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra sp�rringsresultatet */
-      $brukernavn=$rad["postnr"];       
-      $fornavn=$rad["poststed"];
+      $brukernavn=$rad["brukernavn"];       
+      $fornavn=$rad["fornavn"];
       $etternavn=$rad["etternavn"];
       $klassekode=$rad["klassekode"];    
 
