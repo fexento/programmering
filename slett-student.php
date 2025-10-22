@@ -22,18 +22,7 @@
       else
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
-          $sqlSetning = "SELECT COUNT(*) AS antall FROM student WHERE klassekode = '$klassekode';";
-          $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
-          $rad = mysqli_fetch_assoc($sqlResultat);
-
-          if ($rad['antall'] > 0) {
-              print("Klassen med kode '$klassekode' kan ikke slettes fordi det er $rad[antall] student(er) registrert i den.");
-          } 
-          else {
-              $sqlSetning = "DELETE FROM klassekode WHERE klassekode = '$klassekode';";
-              mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
-              print("Følgende klasse er nå slettet: $klassekode<br />");
-          }
+          
 
           $sqlSetning="SELECT * FROM student WHERE brukernavn='$brukernavn';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");

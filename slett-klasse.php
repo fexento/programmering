@@ -26,23 +26,40 @@
       else
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
+          
 
           $sqlSetning="SELECT * FROM klassekode WHERE klassekode='$klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
-          if ($antallRader==0)  /* poststedet er ikke registrert */
-            {
-              print ("Klassekoden finnes ikke");
-            }
-          else
-            {	  
-              $sqlSetning="DELETE FROM klassekode WHERE klassekode='$klassekode';";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-                /* SQL-setning sendt til database-serveren */
-		
-              print ("F&oslash;lgende klassekode er n&aring; slettet: $klassekode  <br />");
-            }
+          if ($antallRader==0)
+  {
+    print ("Klassekoden finnes ikke");
+  }
+else
+  {
+    // Sjekk om det finnes studenter i klassen
+    $sqlSjekkStudenter = "SELECT brukernavn, fornavn, etternavn FROM student WHERE klassekode='$klassekode';";
+    $resultatStudenter = mysqli_query($db, $sqlSjekkStudenter) or die("Ikke mulig å hente studentdata");
+    $antallStudenter = mysqli_num_rows($resultatStudenter);
+
+    if ($antallStudenter > 0) {
+      print("<strong>Kan ikke slette klassen '$klassekode' fordi følgende studenter er registrert:</strong><br/><ul>");
+      while ($rad = mysqli_fetch_array($resultatStudenter)) {
+        $brukernavn = $rad["brukernavn"];
+        $fornavn = $rad["fornavn"];
+        $etternavn = $rad["etternavn"];
+        print("<li>$brukernavn $fornavn $etternavn</li>");
+    }
+      print("</ul>");
+      print("Slett studentene først via studentadministrasjon.");
+        } else {
+      // Klassen har ingen studenter – trygt å slette
+      $sqlSlettKlasse = "DELETE FROM klassekode WHERE klassekode='$klassekode';";
+      mysqli_query($db, $sqlSlettKlasse) or die("Ikke mulig å slette klassen");
+      print("Klassen '$klassekode' er nå slettet.");
+        }
+    }
         }
     }
 ?> 
