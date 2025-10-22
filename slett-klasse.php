@@ -17,9 +17,9 @@
 <?php
   if (isset($_POST ["slettKlasseKnapp"]))
     {	
-      $klassenavn=$_POST ["klassenavn"];
+      $klassekode=$_POST ["klassekode"];
 	  
-      if (!$klassenavn)
+      if (!$klassekode)
         {
           print ("Klassekode må fylles ut.");
         }
@@ -27,7 +27,7 @@
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM klassenavn WHERE klassekode='$klassekode';";
+          $sqlSetning="SELECT * FROM klassekode WHERE klassekode='$klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
@@ -37,7 +37,7 @@
             }
           else
             {	  
-              $sqlSetning="DELETE FROM klassenavn WHERE klassekode='$klassekode';";
+              $sqlSetning="DELETE FROM klassekode WHERE klassekode='$klassekode';";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
                 /* SQL-setning sendt til database-serveren */
 		
