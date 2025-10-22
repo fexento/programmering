@@ -19,7 +19,7 @@
     {	
       $klassenavn=$_POST ["klassenavn"];
 	  
-	  if (!$postnr)
+      if (!$klassenavn)
         {
           print ("Klassekode må fylles ut.");
         }
