@@ -52,7 +52,7 @@ else
         print("<li>$brukernavn $fornavn $etternavn</li>");
     }
       print("</ul>");
-      print("Slett studentene først via studentadministrasjon.");
+      print("Slett studentene først via slett student siden.");
         } else {
       // Klassen har ingen studenter – trygt å slette
       $sqlSlettKlasse = "DELETE FROM klassekode WHERE klassekode='$klassekode';";
